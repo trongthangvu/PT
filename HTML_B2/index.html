@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Thiết lập kiểu cho nút bấm */
+      button {
+        background-color: red; /* Nền màu đỏ mặc định */
+      }
+
+      button:active {
+        background-color: blue; /* Chuyển sang màu xanh khi nút được nhấn */
+        padding: 20px; /* Thêm khoảng đệm khi nút ở trạng thái active */
+      }
+
+      /* Thiết lập cho container chứa hình ảnh, ban đầu được ẩn */
+      #image-container {
+        display: none; /* Ẩn container hình ảnh ban đầu */
+        margin-top: 20px; /* Thêm khoảng cách phía trên khi hiển thị */
+      }
+
+      /* Thiết lập cho thông điệp */
+      #message {
+        font-size: 20px; /* Kích thước chữ cho thông điệp */
+        color: green; /* Màu chữ xanh lá */
+        margin-top: 20px; /* Thêm khoảng cách phía trên */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Một div để thay đổi màu sắc, hiện tại chưa có chức năng cụ thể -->
+    <div id="change_color_id"></div>
+
+    <!-- Div khác để thay đổi màu sắc, chứa một liên kết bên trong -->
+    <div class="change_color">
+      <p>Thay đổi màu sắc</p>
+      <!-- Văn bản hiển thị -->
+      <a href="https://www.facebook.com/thang.vutrong.3386/" target="_blank"
+        >Link fb</a
+      >
+      <!-- Liên kết tới trang Facebook, mở trong tab mới -->
+    </div>
+
+    <!-- Nút bấm kích hoạt hàm myFunction() khi được click -->
+    <div>
+      <button onclick="myFunction()">Click me!</button>
+    </div>
+
+    <!-- Container cho hình ảnh, ban đầu bị ẩn -->
+    <div id="image-container">
+      <img
+        id="image-container-lock"
+        src="https://via.placeholder.com/150"
+        alt="Placeholder Image"
+      />
+      <!-- Hình ảnh mẫu bên trong container -->
+    </div>
+
+    <!-- Container cho thông điệp, ban đầu trống -->
+    <div id="message"></div>
+
+    <script>
+      function myFunction() {
+        // Lấy container hình ảnh
+        const imageContainer = document.getElementById("image-container");
+
+        // Chuyển đổi trạng thái hiển thị của container hình ảnh
+        if (imageContainer.style.display === "block") {
+          imageContainer.style.display = "none"; // Ẩn container nếu đang hiển thị
+        } else {
+          imageContainer.style.display = "block"; // Hiển thị container nếu đang ẩn
+        }
+      }
+
+      // Chọn phần tử hình ảnh bằng ID
+      const borderImg = document.getElementById("image-container-lock");
+      // Thêm viền đỏ cho hình ảnh
+      borderImg.style.border = "2px solid red";
+      // Làm hình ảnh có dạng hình tròn bằng cách đặt border-radius là 50%
+      borderImg.style.borderRadius = "50%";
+    </script>
+  </body>
+</html>

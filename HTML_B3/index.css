@@ -1,0 +1,45 @@
+body{
+    background-color: azure;
+    margin: 0;
+    
+}
+
+.container{
+    margin: auto;
+    width: 80%;
+}
+.header .title,.content {
+    display: flex;
+    align-items: center;
+}
+
+.content p{
+    margin-right: 20px;
+}
+.banner_img{
+width: 100%;
+height: 50vw;
+}
+.flex{
+    display: flex;
+}
+
+/* grid box */
+.blog{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    /* repeat(3,1fr) chia 1 hàng, 3 phần tử */
+}
+.blog__icon{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid red;
+}
+
+/* float */
+/* .blog__box{
+    float: left;
+    cho các phần tử đi qua trái 
+    width: 28%;
+    mỗi phần tử 28px
+} */

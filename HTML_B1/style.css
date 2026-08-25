@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 20px;
+  }
+
+  /* Đặt kiểu cho tiêu đề */
+  h2 {
+    color: #333;
+    border-bottom: 2px solid #ccc;
+    /* padding-bottom: 5px; */
+    padding: 80px;
+    /* margin: 70px; */
+    border: 20px dotted red;
+  }
+  h3 {
+    color: #333;
+    border-bottom: 2px solid #ccc;
+    /* padding-bottom: 5px; */
+    /* padding: 80px; */
+    margin: 80px;
+    border: 1px solid red;
+  }
+
+  /* Đặt kiểu cho danh sách không thứ tự */
+  ul {
+    list-style-type: square; /* Thay đổi kiểu dấu đầu dòng thành hình tròn */
+    padding-left: 20px;
+    background-color: #e9f5ff; /* Màu nền nhạt cho danh sách */
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  /* Đặt kiểu cho danh sách có thứ tự */
+  ol {
+    list-style-type: decimal; /* Kiểu số thứ tự */
+    padding-left: 20px;
+    background-color: #ffe9e9; /* Màu nền nhạt cho danh sách */
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  /* Đặt kiểu cho các mục trong danh sách */
+  li {
+    color: #555;
+    margin-bottom: 5px;
+  }

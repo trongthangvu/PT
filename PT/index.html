@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Chào ngày mới, Phương Thanh! 🌤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8EF;
+    --sky:#AEDCEE;
+    --sky-deep:#7FC3DE;
+    --leaf:#7FB77E;
+    --peach:#FFB199;
+    --sun:#FFD976;
+    --ink:#3F3A36;
+    --ink-soft:#7A736C;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    font-family:'Be Vietnam Pro', sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 12% 8%, #FFE9C7 0%, transparent 40%),
+      radial-gradient(circle at 90% 15%, #CDEFF7 0%, transparent 45%),
+      radial-gradient(circle at 20% 95%, #DDF2D8 0%, transparent 40%),
+      var(--cream);
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* floating doodles */
+  .doodle{
+    position:fixed;
+    font-size:2rem;
+    opacity:.55;
+    pointer-events:none;
+    animation:float 7s ease-in-out infinite;
+    z-index:0;
+    user-select:none;
+  }
+  .doodle.d1{top:6%; left:6%; animation-delay:0s; font-size:2.4rem;}
+  .doodle.d2{top:14%; right:8%; animation-delay:1.2s; font-size:1.8rem;}
+  .doodle.d3{bottom:10%; left:9%; animation-delay:2s; font-size:2rem;}
+  .doodle.d4{bottom:20%; right:6%; animation-delay:.6s; font-size:1.6rem;}
+  .doodle.d5{top:45%; left:2%; animation-delay:1.8s; font-size:1.4rem;}
+  .doodle.d6{top:38%; right:3%; animation-delay:.9s; font-size:1.5rem;}
+  @keyframes float{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-16px) rotate(8deg);}
+  }
+  @media (max-width: 640px){
+    .doodle{display:none;}
+  }
+
+  .wrap{
+    position:relative;
+    z-index:1;
+    max-width:640px;
+    margin:0 auto;
+    padding:36px 20px 60px;
+  }
+
+  header{
+    text-align:center;
+    margin-bottom:26px;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--sun);
+    color:#5c4a12;
+    font-weight:600;
+    font-size:.8rem;
+    padding:6px 14px;
+    border-radius:999px;
+    letter-spacing:.04em;
+    box-shadow:0 3px 0 rgba(0,0,0,.06);
+  }
+  h1{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size:clamp(1.9rem, 6vw, 2.6rem);
+    margin:14px 0 6px;
+    line-height:1.15;
+    color:var(--ink);
+  }
+  h1 .name{
+    color:var(--sky-deep);
+    text-decoration:underline;
+    text-decoration-color:var(--peach);
+    text-decoration-thickness:5px;
+    text-underline-offset:6px;
+    text-decoration-style:wavy;
+  }
+  .sub{
+    color:var(--ink-soft);
+    font-size:1rem;
+    max-width:420px;
+    margin:0 auto;
+  }
+
+  /* Gallery */
+  .gallery{
+    position:relative;
+    margin:30px auto 18px;
+    max-width:400px;
+  }
+  .polaroid-stage{
+    position:relative;
+    height:min(78vw, 500px);
+  }
+  .polaroid{
+    position:absolute;
+    inset:0;
+    background:var(--card);
+    border-radius:18px;
+    padding:14px 14px 54px;
+    box-shadow:0 18px 40px -12px rgba(63,58,54,.25), 0 4px 10px rgba(63,58,54,.08);
+    transition:transform .5s cubic-bezier(.22,1,.36,1), opacity .5s ease;
+    transform:rotate(-3deg) scale(.98);
+    opacity:0;
+    pointer-events:none;
+  }
+  .polaroid.active{
+    opacity:1;
+    transform:rotate(-2deg) scale(1);
+    pointer-events:auto;
+    z-index:3;
+  }
+  .polaroid.active.tilt-r{transform:rotate(2.5deg) scale(1);}
+  .polaroid img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:10px;
+    display:block;
+    background:#eee;
+  }
+  .polaroid .cap{
+    position:absolute;
+    bottom:14px;
+    left:0; right:0;
+    text-align:center;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:600;
+    color:var(--ink-soft);
+    font-size:.95rem;
+  }
+  .tape{
+    position:absolute;
+    top:-14px; left:50%;
+    transform:translateX(-50%) rotate(-4deg);
+    width:90px; height:30px;
+    background:rgba(255,209,102,.75);
+    border:1px solid rgba(255,255,255,.4);
+    box-shadow:0 2px 4px rgba(0,0,0,.08);
+    z-index:4;
+  }
+
+  .controls{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    margin-top:16px;
+  }
+  .arrow-btn{
+    width:46px; height:46px;
+    border-radius:50%;
+    border:none;
+    background:var(--card);
+    box-shadow:0 6px 14px rgba(63,58,54,.15);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    font-size:1.2rem;
+    color:var(--sky-deep);
+    transition:transform .15s ease, background .15s ease;
+  }
+  .arrow-btn:hover{transform:translateY(-2px) scale(1.05); background:#FFF3E0;}
+  .arrow-btn:active{transform:scale(.95);}
+  .dots{
+    display:flex;
+    gap:8px;
+  }
+  .dot{
+    width:9px;height:9px;border-radius:50%;
+    background:#E4DACE;
+    cursor:pointer;
+    transition:all .25s ease;
+  }
+  .dot.active{
+    background:var(--peach);
+    width:24px;
+    border-radius:6px;
+  }
+  .hint{
+    text-align:center;
+    font-size:.78rem;
+    color:var(--ink-soft);
+    margin-top:10px;
+    opacity:.8;
+  }
+
+  /* Message card */
+  .msg-card{
+    margin-top:34px;
+    background:var(--card);
+    border-radius:22px;
+    padding:26px 24px;
+    box-shadow:0 14px 34px -14px rgba(63,58,54,.2);
+    position:relative;
+    border:2px dashed var(--sky);
+  }
+  .msg-card::before{
+    content:"💌";
+    position:absolute;
+    top:-18px; left:22px;
+    font-size:1.6rem;
+    background:var(--cream);
+    padding:0 6px;
+  }
+  .msg-title{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:1.25rem;
+    margin:4px 0 10px;
+    color:var(--ink);
+  }
+  .msg-body{
+    font-size:.98rem;
+    line-height:1.7;
+    color:#5b544e;
+  }
+  .msg-body strong{color:var(--sky-deep);}
+
+  .energy-row{
+    display:flex;
+    gap:10px;
+    margin-top:18px;
+    flex-wrap:wrap;
+  }
+  .chip{
+    background:var(--sky);
+    color:#0b4a5e;
+    font-size:.82rem;
+    font-weight:600;
+    padding:7px 13px;
+    border-radius:999px;
+  }
+  .chip:nth-child(2){background:var(--peach); color:#7a2f1c;}
+  .chip:nth-child(3){background:#DFF0D8; color:#2f5c2b;}
+  .chip:nth-child(4){background:var(--sun); color:#5c4a12;}
+
+  footer{
+    text-align:center;
+    margin-top:38px;
+    font-size:.8rem;
+    color:var(--ink-soft);
+  }
+  footer .heart{
+    color:var(--peach);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .doodle{animation:none;}
+    .polaroid{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="doodle d1">☀️</div>
+  <div class="doodle d2">🌿</div>
+  <div class="doodle d3">✨</div>
+  <div class="doodle d4">🌸</div>
+  <div class="doodle d5">🍃</div>
+  <div class="doodle d6">💫</div>
+
+  <div class="wrap">
+    <header>
+      <span class="eyebrow">🌞 GỬI RIÊNG CHO BẠN</span>
+      <h1>Xin chàooo,<br><span class="name">Nguyễn Phương Thanh</span> ơi!</h1>
+      <p class="sub">Hôm nay là một ngày mới toanh — cùng lướt qua vài khoảnh khắc xinh xắn và nạp thật nhiều năng lượng nhé 🌈</p>
+    </header>
+
+    <div class="gallery">
+      <div class="polaroid-stage" id="stage">
+        <div class="polaroid active" data-index="0">
+          <div class="tape"></div>
+          <img src="images/t1.jpg" alt="Phương Thanh dạo chơi trong khu vườn xanh mát">
+          <div class="cap">giữa vườn xanh 🌿</div>
+        </div>
+        <div class="polaroid tilt-r" data-index="1">
+          <div class="tape"></div>
+          <img src="images/t2.jpg" alt="Phương Thanh bên hồ nước trong xanh">
+          <div class="cap">bên hồ nắng đẹp ☀️</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="arrow-btn" id="prevBtn" aria-label="Ảnh trước">‹</button>
+        <div class="dots" id="dots">
+          <div class="dot active" data-index="0"></div>
+          <div class="dot" data-index="1"></div>
+        </div>
+        <button class="arrow-btn" id="nextBtn" aria-label="Ảnh sau">›</button>
+      </div>
+      <p class="hint">chạm mũi tên, chấm tròn, hoặc vuốt để đổi ảnh 👉</p>
+    </div>
+
+    <div class="msg-card">
+      <p class="msg-title">Chúc Thanh một ngày thật rực rỡ! 🎈</p>
+      <p class="msg-body">
+        Mong hôm nay của bạn tràn đầy <strong>năng lượng</strong>, việc gì cũng suôn sẻ, cười thật nhiều
+        và luôn giữ được sự tươi tắn dễ thương như trong những bức hình này nha. Bước ra ngoài đón nắng,
+        hít một hơi thật sâu, rồi tiến về phía trước thôi — hôm nay nhất định sẽ là một ngày đẹp! 💪🌤️
+      </p>
+      <div class="energy-row">
+        <span class="chip">☕ tràn đầy tỉnh táo</span>
+        <span class="chip">😄 vui suốt cả ngày</span>
+        <span class="chip">🌱 năng lượng tích cực</span>
+        <span class="chip">✨ mọi việc hanh thông</span>
+      </div>
+    </div>
+
+    <footer>
+      made with <span class="heart">♥</span> cho một ngày thật đẹp của Phương Thanh
+    </footer>
+  </div>
+
+<script>
+  const polaroids = document.querySelectorAll('.polaroid');
+  const dots = document.querySelectorAll('.dot');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const stage = document.getElementById('stage');
+  let current = 0;
+  const total = polaroids.length;
+
+  function show(index){
+    current = (index + total) % total;
+    polaroids.forEach((p, i) => {
+      p.classList.toggle('active', i === current);
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  prevBtn.addEventListener('click', () => show(current - 1));
+  nextBtn.addEventListener('click', () => show(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => show(parseInt(d.dataset.index))));
+
+  // swipe support
+  let touchStartX = 0;
+  stage.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
+  stage.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) {
+      dx > 0 ? show(current - 1) : show(current + 1);
+    }
+  }, {passive:true});
+
+  // keyboard support
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') show(current - 1);
+    if (e.key === 'ArrowRight') show(current + 1);
+  });
+</script>
+</body>
+</html>
